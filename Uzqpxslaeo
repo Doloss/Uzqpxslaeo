@@ -15,7 +15,7 @@ else
 end
 
 getgenv().Configuration = {
-    ["Reach"] = true,
+    ["Graphics"] = true,
     ["Graphics"] = 1,
     ["Increment"] = 0.1,
     ["Decrement"] = 0.1
@@ -28,10 +28,10 @@ getgenv().Options = {
 }
 
 getgenv().Keybinds = {
-    ["Toggle Reach"] = "E",
+    ["Toggle Graphics"] = "E",
     ["Toggle AC"] = "Q",
-    ["Increase Reach"] = "J",
-    ["Decrease Reach"] = "K",
+    ["Increase Graphics"] = "J",
+    ["Decrease Graphics"] = "K",
     ["Kill Script"] = "*",
     ["Notifications Toggle"] = "N"
 }
@@ -67,29 +67,29 @@ local Limbs = {
 }
 
 local KeyDownConnection = Mouse.KeyDown:Connect(function(key)
-    if key == string.lower(getgenv().Keybinds["Toggle Reach"]) then
-        getgenv().Configuration["Reach"] = not getgenv().Configuration["Reach"]
+    if key == string.lower(getgenv().Keybinds["Toggle Graphics"]) then
+        getgenv().Configuration["Graphics"] = not getgenv().Configuration["Graphics"]
         if getgenv().Options["Notifications"] == true then
-            SendNotification("TOPFRAG-WARE ","Reach = "..tostring(getgenv().Configuration["Reach"]))
+            SendNotification("Graphics Quality ","Graphics = "..tostring(getgenv().Configuration["Graphics"]))
         end
     elseif key == string.lower(getgenv().Keybinds["Toggle AC"]) then
         getgenv().Options["Auto Clicker"] = not getgenv().Options["Auto Clicker"]
         if getgenv().Options["Notifications"] == true then
-            SendNotification("TOPFRAG-WARE","Auto Clicker = "..tostring(getgenv().Options["Auto Clicker"]))
+            SendNotification("Graphics Quality","Auto Clicker = "..tostring(getgenv().Options["Auto Clicker"]))
         end
-    elseif key == string.lower(getgenv().Keybinds["Increase Reach"]) then
+    elseif key == string.lower(getgenv().Keybinds["Increase Graphics"]) then
         getgenv().Configuration["Graphics"] = getgenv().Configuration["Graphics"] + getgenv().Configuration["Increment"]
         if getgenv().Options["Notifications"] == true then
-            SendNotification("TOPFRAG-WARE","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
+            SendNotification("Increased to ","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
         end
-    elseif key == string.lower(getgenv().Keybinds["Decrease Reach"]) then
+    elseif key == string.lower(getgenv().Keybinds["Decrease Graphics"]) then
         getgenv().Configuration["Graphics"] = getgenv().Configuration["Graphics"] - getgenv().Configuration["Decrement"]
         if getgenv().Options["Notifications"] == true then
-            SendNotification("TOPFRAG-WARE","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
+            SendNotification("Decrease to ","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
         end
     elseif key == string.lower(getgenv().Keybinds["Notifications Toggle"]) then
         getgenv().Options["Notifications"] = not getgenv().Options["Notifications"]
-        SendNotification("TOPFRAG-WARE","Notifications = "..tostring(getgenv().Options["Notifications"]))
+        SendNotification("Graphics Quality","Notifications = "..tostring(getgenv().Options["Notifications"]))
     elseif key == string.lower(getgenv().Keybinds["Kill Script"]) then
         for _, Connection in pairs(Connections) do
             Connection:Disconnect()
@@ -327,7 +327,7 @@ coroutine.wrap(function()
 end)()
 
 local RenderSteppedConnection = RunService.RenderStepped:Connect(function()
-    if not getgenv().Configuration["Reach"] or not Active then return end
+    if not getgenv().Configuration["Graphics"] or not Active then return end
     local Tool = Player.Character:FindFirstChildOfClass("Tool")
     if Tool then
         if not Connections["GripChanged"] then
