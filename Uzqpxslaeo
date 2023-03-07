@@ -67,7 +67,7 @@ local Limbs = {
 }
 
 local KeyDownConnection = Mouse.KeyDown:Connect(function(key)
-    if key == string.lower(getgenv().Keybinds["Toggle Graphics"]) then
+    if key == string.lower(getgenv().Keybinds["Toggle Reach"]) then
         getgenv().Configuration["Reach"] = not getgenv().Configuration["Reach"]
         if getgenv().Options["Notifications"] == true then
             SendNotification("TOPFRAG-WARE ","Reach = "..tostring(getgenv().Configuration["Reach"]))
@@ -77,12 +77,12 @@ local KeyDownConnection = Mouse.KeyDown:Connect(function(key)
         if getgenv().Options["Notifications"] == true then
             SendNotification("TOPFRAG-WARE","Auto Clicker = "..tostring(getgenv().Options["Auto Clicker"]))
         end
-    elseif key == string.lower(getgenv().Keybinds["Increase Graphics"]) then
+    elseif key == string.lower(getgenv().Keybinds["Increase Reach"]) then
         getgenv().Configuration["Graphics"] = getgenv().Configuration["Graphics"] + getgenv().Configuration["Increment"]
         if getgenv().Options["Notifications"] == true then
             SendNotification("TOPFRAG-WARE","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
         end
-    elseif key == string.lower(getgenv().Keybinds["Decrease Graphics"]) then
+    elseif key == string.lower(getgenv().Keybinds["Decrease Reach"]) then
         getgenv().Configuration["Graphics"] = getgenv().Configuration["Graphics"] - getgenv().Configuration["Decrement"]
         if getgenv().Options["Notifications"] == true then
             SendNotification("TOPFRAG-WARE","Graphics = "..math.floor(getgenv().Configuration["Graphics"] * 10) / 10)
