@@ -5,7 +5,7 @@ function SendNotification(Ti,Te)
 end
 
 if _G.TOPFRAGWARE then
-    SendNotification("TOPFRAGWARE", "Ready to TOPFRAG?)
+    SendNotification("TOPFRAGWARE", "Ready to TOPFRAG?")
     return
 else
     _G.TOPFRAGWARE = true
@@ -80,7 +80,7 @@ local KeyDownConnection = Mouse.KeyDown:Connect(function(key)
     elseif key == string.lower(getgenv().Keybinds["Increase Reach"]) then
         getgenv().Configuration["Distance"] = getgenv().Configuration["Distance"] + getgenv().Configuration["Increment"]
         if getgenv().Options["Notifications"] == true then
-            SendNotification("TOPFRAGWARE,"Distance = "..math.floor(getgenv().Configuration["Distance"] * 10) / 10)
+            SendNotification("TOPFRAGWARE","Distance = "..math.floor(getgenv().Configuration["Distance"] * 10) / 10)
         end
     elseif key == string.lower(getgenv().Keybinds["Decrease Reach"]) then
         getgenv().Configuration["Distance"] = getgenv().Configuration["Distance"] - getgenv().Configuration["Decrement"]
