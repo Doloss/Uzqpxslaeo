@@ -28,10 +28,10 @@ getgenv().Options = {
 }
 
 getgenv().Keybinds = {
-    ["Toggle Graphics"] = "E",
+    ["Toggle Reach"] = "E",
     ["Toggle AC"] = "Q",
-    ["Increase Graphics"] = "J",
-    ["Decrease Graphics"] = "K",
+    ["Increase Reach"] = "J",
+    ["Decrease Reach"] = "K",
     ["Kill Script"] = "*",
     ["Notifications Toggle"] = "N"
 }
