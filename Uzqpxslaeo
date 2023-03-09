@@ -1,3 +1,53 @@
+-- MADE BY zones#3487
+-- MUST GO IN AUTO EXECUTE
+--UBUBBLES
+local prnt = getrenv().print
+local acversion = "u2.6.1"
+local old
+old = hookfunction(prnt, function(...)
+    local args = {...}
+    local version = args[1]
+    if args[1] == acversion then
+        for i, v in pairs(debug.getstack(1)) do 
+            if type(v) == 'table' then
+               setmetatable(v, {
+                    __newindex = function(self, i, v)
+                        return nil;  
+                    end
+               }) 
+            end
+        end
+    end
+    return old(...)
+end)
+
+
+---WARDEN BYPASS (1st ever)
+--MADE BY zones#3487
+
+local acmoldule
+for i, v in pairs(getnilinstances()) do
+    if typeof(v) == "Instance" then
+        if v:IsA("ModuleScript") then
+            pcall(function()
+                if require(v).Initiate ~= nil then
+                   acmoldule = v;
+                end
+            end)
+        end
+    end
+end
+local old;
+old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)  
+    local args = {...}
+    if args[1] == "exploit" then if getcallingscript() == acmoldule then
+            return wait(9e9)
+        end
+    end
+    return old(self, ...)
+end))
+
+
 local StarterGui = game:GetService("StarterGui")
 
 function SendNotification(Ti,Te)
